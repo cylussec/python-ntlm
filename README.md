@@ -3,9 +3,6 @@ Python library that provides NTLM support, including an authentication handler f
 
 This library allows you to retrieve content from (usually corporate) servers protected with windows authentication (NTLM) using the python urllib2.
 
-## Python 3 Support
-There is work going on to port the library to python 3, you can find it in the python30 directory. (at this time it seems to work as good as the python 2 library)
-
 # Usage
 
 ## Simple example
