@@ -6,9 +6,10 @@ This library allows you to retrieve content from (usually corporate) servers pro
 # Usage
 
 ## Simple example
+
 ```python
 import urllib2
-from ntlm import HTTPNtlmAuthHandler
+from ntlm import httpntlmauthhandler
 
 user = 'DOMAIN\User'
 password = "Password"
@@ -17,7 +18,7 @@ url = "http://ntlmprotectedserver/securedfile.html"
 passman = urllib2.HTTPPasswordMgrWithDefaultRealm()
 passman.add_password(None, url, user, password)
 # create the NTLM authentication handler
-auth_NTLM = HTTPNtlmAuthHandler.HTTPNtlmAuthHandler(passman)
+auth_NTLM = httpntlmauthhandler.HTTPNtlmAuthHandler(passman)
 
 # create and install the opener
 opener = urllib2.build_opener(auth_NTLM)
@@ -29,22 +30,23 @@ print(response.read())
 ```
 
 ## Extended Example
+
 ```python
 import urllib2
 from urlparse import urlparse, urlunparse
-from ntlm import HTTPNtlmAuthHandler
+from ntlm import httpntlmauthhandler
 
 user = 'DOMAIN\User'
 password = "Password"
 url = "http://ntlmprotectedserver/securedfile.html"
 # determine a base_uri for which the username and password can be used
 parsed_url = urlparse(self.href)
-base_uri = urlunparse((parsed_url[0],parsed_url[1],"","","",""))
+base_uri = urlunparse((parsed_url[0], parsed_url[1], "", "", "", ""))
 
 passman = urllib2.HTTPPasswordMgrWithDefaultRealm()
 passman.add_password(None, base_uri, user, password)
 # create the NTLM authentication handler
-auth_NTLM = HTTPNtlmAuthHandler.HTTPNtlmAuthHandler(passman)
+auth_NTLM = httpntlmauthhandler.HTTPNtlmAuthHandler(passman)
 
 # other authentication handlers
 auth_basic = urllib2.HTTPBasicAuthHandler(passman)

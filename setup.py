@@ -14,7 +14,7 @@ not desirable.
 
 
 setup(
-    name='python-ntlm',
+    name='ntlm_handler',
     version='1.2.0',
     description='Python library that provides NTLM support, including an authentication handler for urllib2. Works '
                 'with pass-the-hash in addition to password authentication.',
@@ -24,7 +24,7 @@ setup(
     maintainer='Brian Seel',
     maintainer_email='brian.seel@gmail.com',
     url="https://github.com/cylussec/python-ntlm",
-    packages=["ntlm"],
+    packages=["ntlm_handler"],
     zip_safe=False,
     entry_points={
         "console_scripts": [

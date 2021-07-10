@@ -21,14 +21,14 @@ from urllib.parse import urlparse, urlunparse
 import inspect, os, sys
 
 try:
-    from ntlm import HTTPNtlmAuthHandler
+    from ntlm import httpntlmauthhandler
 except ImportError:
     # assume ntlm is in the directory "next door"
     ntlm_folder = os.path.realpath(os.path.join(
         os.path.dirname(inspect.getfile(inspect.currentframe())),
         '../python30'))
     sys.path.insert(0, ntlm_folder)
-    from ntlm import HTTPNtlmAuthHandler
+    from ntlm import httpntlmauthhandler
 
 def process(password, url):
     user = '%s\%s' % ( os.environ["USERDOMAIN"], os.environ["USERNAME"] )
@@ -40,7 +40,7 @@ def process(password, url):
     passman = urllib.request.HTTPPasswordMgrWithDefaultRealm()
     passman.add_password(None, base_uri, user, password)
     # create the NTLM authentication handler
-    auth_NTLM = HTTPNtlmAuthHandler.HTTPNtlmAuthHandler(passman)
+    auth_NTLM = httpntlmauthhandler.HTTPNtlmAuthHandler(passman)
 
     # other authentication handlers
     auth_basic = urllib.request.HTTPBasicAuthHandler(passman)
